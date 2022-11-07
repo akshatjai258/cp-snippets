@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+const int BLOCK = 555;
+struct query{
+    int l;
+    int r;
+    int i;
+};
+
+bool comp(query a , query b)
+{
+    if(a.l / BLOCK != b.l/BLOCK)
+    return a.l/BLOCK < b.l/BLOCK;
+ 
+    return a.r < b.r;
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>mosalgo</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

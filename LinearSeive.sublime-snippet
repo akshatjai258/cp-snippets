@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[
+#define SIEVE
+vector <int> prime;
+bool is_composite[N];
+
+void sieve () {
+    std::fill (is_composite, is_composite + N, false);
+    for (int i = 2; i < N; ++i) {
+        if (!is_composite[i]) prime.push_back (i);
+        for (int j = 0; j < prime.size () && i * prime[j] < N; ++j) {
+            is_composite[i * prime[j]] = true;
+            if (i % prime[j] == 0) break;
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>linearsieve</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

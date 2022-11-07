@@ -1,0 +1,64 @@
+<snippet>
+	<content><![CDATA[
+struct FenwickTree
+{
+	int N;
+	vector<int> tree;
+ 
+	void init(int n)
+	{
+		N = n;
+		tree.assign(n + 1, 0);
+	}
+ 
+	void update(int idx, int val)
+	{
+		while (idx <= N)
+		{
+			tree[idx] += val;
+			idx += idx & -idx;
+		}
+	}
+ 
+	void updateMax(int idx, int val)
+	{
+		while (idx <= N)
+		{
+			tree[idx] = max(tree[idx], val);
+			idx += idx & -idx;
+		}
+	}
+ 
+	int pref(int idx)
+	{
+		int ans = 0;
+		while (idx > 0)
+		{
+			ans += tree[idx];
+			idx -= idx & -idx;
+		}
+		return ans;
+	}
+ 
+	int rsum(int l, int r)
+	{
+		return pref(r) - pref(l - 1);
+	}
+ 
+	int prefMax(int idx)
+	{
+		int ans = -2e9;
+		while (idx > 0)
+		{
+			ans = max(ans, tree[idx]);
+			idx -= idx & -idx;
+		}
+		return ans;
+	}
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>bit</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
